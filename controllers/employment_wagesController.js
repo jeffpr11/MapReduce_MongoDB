@@ -34,7 +34,7 @@ module.exports = {
 			const title = "Proyecto Primer Parcial - Map Reduce";
 			const group = "Grupo #3: Evelyn Mejia, George Henriquez y Jeffrey Prado";
 			const infoPage = { actual: data.page, hasPrev: data.hasPrevPage, 
-				hasNext: data.hasNextPage, total: data.totalPages };
+				hasNext: data.hasNextPage, pages: data.totalPages, docs: data.totalDocs };
 			res.render('index', { list: list, infoPage: infoPage,  
 				title: title, group: group 
 			});

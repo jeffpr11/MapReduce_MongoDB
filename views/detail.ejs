@@ -4,7 +4,7 @@
   <form action="/employment/<%= id %>" method="post">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <div>
-        <a class="btn bg-transparent align-baseline" data-original-title="Volver" href="/employment"><i class="fas fa-angle-left fa-2x"></i></a>
+        <a class="btn bg-transparent align-baseline" data-original-title="Volver" href="#" onClick="history.go(-1)"><i class="fas fa-angle-left fa-2x"></i></a>
         <h1><%= title %></h1>
       </div>
       <div class="btn-toolbar mb-2 mb-md-1">
@@ -21,40 +21,40 @@
           <div class="row">
             <div class="col">
               <label for="area_title" class="form-label">Área</label>
-              <input type="text" class="form-control" name="area_title" value="<%= title !== 'New' ? data.fields.area_title : '' %>" required>
+              <input type="text" placeholder="City, State" class="form-control" name="area_title" value="<%= title !== 'New' ? data.fields.area_title : '' %>" required>
           </div>
           </div>
           
           <div class="row">
             <div class="col">
               <label for="industry_code" class="form-label">Código de Industria</label>
-              <input type="text" class="form-control" name="industry_code" value="<%= title !== 'New' ? data.fields.industry_code : '' %>" required>
+              <input type="number" placeholder="0" min="0" class="form-control" name="industry_code" value="<%= title !== 'New' ? data.fields.industry_code : '' %>" required>
             </div>
             <div class="col">
               <label for="industry_title" class="form-label">Nombre de Industria</label>
-              <input type="text" class="form-control" name="industry_title" value="<%= title !== 'New' ? data.fields.industry_title : '' %>" required>
+              <input type="text" placeholder="Industry" class="form-control" name="industry_title" value="<%= title !== 'New' ? data.fields.industry_title : '' %>" required>
             </div>
           </div>
 
           <div class="row">
             <div class="col">
               <label for="total_qtrly_wages" class="form-label">Salarios Trimestrales Totales</label>
-              <input type="text" class="form-control" name="total_qtrly_wages" value="<%= title !== 'New' ? data.fields.total_qtrly_wages : '' %>" required>
+              <input type="number" placeholder="0.00" min="0" step="0.01" pattern="^\d+(?:\.\d{1,2})?$" class="form-control" name="total_qtrly_wages" value="<%= title !== 'New' ? data.fields.total_qtrly_wages : '' %>" required>
             </div>
             <div class="col">
               <label for="avg_wkly_wage" class="form-label">Salario Semanal Promedio</label>
-              <input type="text" class="form-control" name="avg_wkly_wage" value="<%= title !== 'New' ? data.fields.avg_wkly_wage : '' %>" required>
+              <input type="number" placeholder="0.00" min="0" step="0.01" pattern="^\d+(?:\.\d{1,2})?$" class="form-control" name="avg_wkly_wage" value="<%= title !== 'New' ? data.fields.avg_wkly_wage : '' %>" required>
             </div>
           </div>
 
           <div class="row">
             <div class="col">
               <label for="period" class="form-label">Periodo</label>
-              <input type="text" class="form-control" name="period" value="<%= title !== 'New' ? data.fields.period : '' %>" required>
+              <input type="text" placeholder="YYYY-Q#" class="form-control" name="period" value="<%= title !== 'New' ? data.fields.period : '' %>" required>
             </div>
             <div class="col">
               <label for="month1_emplvl" class="form-label">Nivel de Empleo</label>
-              <input type="text" class="form-control" name="month1_emplvl" value="<%= title !== 'New' ? data.fields.month1_emplvl : '' %>" required>
+              <input type="number" placeholder="0" min="0" class="form-control" name="month1_emplvl" value="<%= title !== 'New' ? data.fields.month1_emplvl : '' %>" required>
             </div>
           </div>
         </form>

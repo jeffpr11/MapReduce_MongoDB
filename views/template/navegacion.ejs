@@ -1,6 +1,6 @@
 
 <div class="row mt-3">
-    <% if(infoPage.total) { %>
+    <% if(infoPage.pages) { %>
         <nav>
             <ul class="pagination justify-content-center">
                 <% if(infoPage.actual === 1) { %>
@@ -21,7 +21,7 @@
                         <a href="#" class="page-link">...</a>
                     </li>
                 <% } %>
-                <% for(; i<=(infoPage.actual + 4) && i<=infoPage.total; i++) {%>
+                <% for(; i<=(infoPage.actual + 4) && i<=infoPage.pages; i++) {%>
                     <% if(i === infoPage.actual) { %>
                         <li class="page-item disabled">
                             <a href="?page=<%= i %>" class="page-link"><%= i %></a>
@@ -31,14 +31,14 @@
                             <a href="?page=<%= i %>" class="page-link"><%= i %></a>
                         </li>
                     <% } %>
-                    <% if(i === (infoPage.actual + 4) && i < infoPage.total){ %>
+                    <% if(i === (infoPage.actual + 4) && i < infoPage.pages){ %>
                         <li class="page-item disabled">
                             <a href="#" class="page-link">...</a>
                         </li>
                     <% } %>
                 <% } %>
 
-                <% if(infoPage.actual === infoPage.total) { %>
+                <% if(infoPage.actual === infoPage.pages) { %>
                     <li class="page-item disabled">
                         <a href="#" class="page-link">Siguiente</a>
                     </li>
@@ -53,3 +53,14 @@
         </nav>
     <% } %>
 </div>
+<% if(infoPage.pages) { %>
+    <div class="container-fluid border-bottom">
+        <footer class="pb-3">
+            <ul class="nav justify-content-center">
+                <p class="text-muted"><b>Total P&aacute;ginas:</b> <%= infoPage.pages %></p>
+                &nbsp;&nbsp;&nbsp;
+                <p class="text-muted"><b>Total Registros:</b> <%= infoPage.docs %></p>
+            </ul>
+        </footer>
+    </div>
+<% } %>
