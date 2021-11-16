@@ -7,21 +7,19 @@ var Employment_wagesModel = require('../models/employment_wagesModel.js');
  */
 module.exports = {
 
-    /**
+	/**
      * employment_wagesController.list()
      */
     list: function (req, res) {
-        Employment_wagesModel.find(function (err, employment_wagess) {
-            if (err) {
-                return res.status(500).json({
-                    message: 'Error when getting employment_wages.',
-                    error: err
-                });
-            }
-
-            return res.json(employment_wagess);
-        });
-    },
+        Employment_wagesModel.find().limit(10)
+		.then(data => {
+			res.send(data);
+			console.log("data",data)
+		})
+		.catch(err => {
+			res.status(500).send({ message: err.message || "Some error occurred while retrieving tutorials."})
+		});		
+	},
 
     /**
      * employment_wagesController.show()
