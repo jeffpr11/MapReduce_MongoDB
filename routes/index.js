@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Proyecto Primer Parcial - Map Reduce', group: 'Grupo #3: Evelyn Mejia, George Henriquez y Jeffrey Prado' });
+  res.redirect("/employment");
 });
 
 router.get('/detail', function(req, res, next) {

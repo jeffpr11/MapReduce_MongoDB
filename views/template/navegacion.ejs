@@ -1,0 +1,55 @@
+
+<div class="row mt-3">
+    <% if(infoPage.total) { %>
+        <nav>
+            <ul class="pagination justify-content-center">
+                <% if(infoPage.actual === 1) { %>
+                    <li class="page-item disabled">
+                        <a href="#" class="page-link">Anterior</a>
+                    </li>
+                <% } else { %>
+                    <% if(infoPage.hasPrev) { %>
+                        <li class="page-item">
+                            <a href="?page=<%= (infoPage.actual - 1) %>" class="page-link">Anterior</a>
+                        </li>
+                    <% } %>
+                <% } %>
+                
+                <% var i = infoPage.actual > 5 ? (infoPage.actual - 4) : 1 %>
+                <% if(i !== 1){ %>
+                    <li class="page-item disabled">
+                        <a href="#" class="page-link">...</a>
+                    </li>
+                <% } %>
+                <% for(; i<=(infoPage.actual + 4) && i<=infoPage.total; i++) {%>
+                    <% if(i === infoPage.actual) { %>
+                        <li class="page-item disabled">
+                            <a href="?page=<%= i %>" class="page-link"><%= i %></a>
+                        </li>
+                    <% } else { %>
+                        <li class="page-item">
+                            <a href="?page=<%= i %>" class="page-link"><%= i %></a>
+                        </li>
+                    <% } %>
+                    <% if(i === (infoPage.actual + 4) && i < infoPage.total){ %>
+                        <li class="page-item disabled">
+                            <a href="#" class="page-link">...</a>
+                        </li>
+                    <% } %>
+                <% } %>
+
+                <% if(infoPage.actual === infoPage.total) { %>
+                    <li class="page-item disabled">
+                        <a href="#" class="page-link">Siguiente</a>
+                    </li>
+                <% } else { %>
+                    <% if(infoPage.hasNext) { %>
+                        <li class="page-item">
+                            <a href="?page=<%= (infoPage.actual + 1) %>" class="page-link">Siguiente</a>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
+        </nav>
+    <% } %>
+</div>

@@ -20,11 +20,11 @@ router.post('/', employment_wagesController.create);
 /*
  * PUT
  */
-router.put('/:id', employment_wagesController.update);
+router.post('/:id', employment_wagesController.update);
 
 /*
  * DELETE
  */
-router.delete('/:id', employment_wagesController.remove);
+router.get('/delete/:id', employment_wagesController.remove);
 
 module.exports = router;

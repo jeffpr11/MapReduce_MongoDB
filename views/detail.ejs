@@ -1,49 +1,66 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>
-    <%= title %>
-  </title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
-</head>
-
+<%- include("template/header", {title: title}); %>
 <body>
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <div>
-      <a class="btn bg-transparent align-baseline" data-original-title="Volver" href="/"><i class="fas fa-angle-left fa-2x"></i></a>
-      <h1><%= title %></h1>
+  <% var id = title !== 'New' ? data._id : '' %>
+  <form action="/employment/<%= id %>" method="post">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <div>
+        <a class="btn bg-transparent align-baseline" data-original-title="Volver" href="/employment"><i class="fas fa-angle-left fa-2x"></i></a>
+        <h1><%= title %></h1>
+      </div>
+      <div class="btn-toolbar mb-2 mb-md-1">
+        <button type="submit" class="btn btn-primary mx-2">Guardar <i class="far fa-save"></i></button>
+        <% if(title !== 'New') { %>
+          <a class="btn btn-danger align-baseline" href="/employment/delete/<%= id %>">Eliminar <i class="far fa-trash-alt"></i></a>
+          <!-- <button type="button" class="btn btn-danger">Eliminar <i class="far fa-trash-alt"></i></button> -->
+        <% } %>
+      </div>
     </div>
-    <div class="btn-toolbar mb-2 mb-md-1">
-      <button type="button" class="btn btn-primary mx-2">Guardar <i class="far fa-save"></i></button>
-      <% if(title !== 'New') { %>
-        <button type="button" class="btn btn-danger">Eliminar <i class="far fa-trash-alt"></i></button>
-      <% } %>
-    </div>
-  </div>
 
-  <div class="container-fluid text-center">
-    <div class="row">
-      <table class="table table-borderless">
-        <thead class="table-dark">
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-          </tr>
-        </thead>
-        <tbody id="robot-row">
-          <tr>
-            <td>1</td>
-            <td>Nombre</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+    <div class="container-fluid form-container">
+      <div class="row">
+          <div class="row">
+            <div class="col">
+              <label for="area_title" class="form-label">Área</label>
+              <input type="text" class="form-control" name="area_title" value="<%= title !== 'New' ? data.fields.area_title : '' %>" required>
+          </div>
+          </div>
+          
+          <div class="row">
+            <div class="col">
+              <label for="industry_code" class="form-label">Código de Industria</label>
+              <input type="text" class="form-control" name="industry_code" value="<%= title !== 'New' ? data.fields.industry_code : '' %>" required>
+            </div>
+            <div class="col">
+              <label for="industry_title" class="form-label">Nombre de Industria</label>
+              <input type="text" class="form-control" name="industry_title" value="<%= title !== 'New' ? data.fields.industry_title : '' %>" required>
+            </div>
+          </div>
 
+          <div class="row">
+            <div class="col">
+              <label for="total_qtrly_wages" class="form-label">Salarios Trimestrales Totales</label>
+              <input type="text" class="form-control" name="total_qtrly_wages" value="<%= title !== 'New' ? data.fields.total_qtrly_wages : '' %>" required>
+            </div>
+            <div class="col">
+              <label for="avg_wkly_wage" class="form-label">Salario Semanal Promedio</label>
+              <input type="text" class="form-control" name="avg_wkly_wage" value="<%= title !== 'New' ? data.fields.avg_wkly_wage : '' %>" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="period" class="form-label">Periodo</label>
+              <input type="text" class="form-control" name="period" value="<%= title !== 'New' ? data.fields.period : '' %>" required>
+            </div>
+            <div class="col">
+              <label for="month1_emplvl" class="form-label">Nivel de Empleo</label>
+              <input type="text" class="form-control" name="month1_emplvl" value="<%= title !== 'New' ? data.fields.month1_emplvl : '' %>" required>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </form>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
