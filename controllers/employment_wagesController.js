@@ -31,13 +31,6 @@ module.exports = {
 		Employment_wagesModel.paginate({}, options)		
 		.then(data => {
 			res.send({
-				currentPage: data.page,
-				totalPages: data.totalPages,
-				totalRows: data.totalDocs,
-				hasPrev: data.hasPrevPage,
-				prev: data.prevPage,
-				hasNext: data.hasNextPage,
-				next: data.nextPage,
 				data
 			});
 		})
