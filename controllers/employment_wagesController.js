@@ -1,4 +1,16 @@
 var Employment_wagesModel = require('../models/employment_wagesModel.js');
+var options = {
+	page: 1,
+	limit: 10,
+	select: ['fields.area_title',
+		'fields.industry_code',  
+		'fields.industry_title', 
+		'fields.total_qtrly_wages', 
+		'fields.avg_wkly_wage',
+		'fields.month1_emplvl',
+		'fields.period',
+	]	
+};
 
 /**
  * employment_wagesController.js
@@ -11,21 +23,20 @@ module.exports = {
      * employment_wagesController.list()
      */
     list: function (req, res) {
-		const { page = 1, limit = 10 } = req.query;
-        Employment_wagesModel.find({},
-			['fields.area_title',
-			'fields.industry_code',  
-			'fields.industry_title', 
-			'fields.total_qtrly_wages', 
-			'fields.avg_wkly_wage',
-			'fields.month1_emplvl',
-			'fields.period',
-		 ],
-		{sort:{  _id: -1 }}
-		).limit(limit * 1).skip((page - 1) * limit)
+		if (req.query) {
+			if (req.query.page) options.page = req.query.page;
+			if (req.query.limit) options.limit = req.query.limit;
+		}
+		Employment_wagesModel.paginate({}, options)
 		.then(data => {
 			res.send({
-				total: data.length,
+				currentPage: data.page,
+				totalPages: data.totalPages,
+				totalRows: data.totalDocs,
+				hasPrev: data.hasPrevPage,
+				prev: data.prevPage,
+				hasNext: data.hasNextPage,
+				next: data.nextPage,
 				data
 			});
 		})

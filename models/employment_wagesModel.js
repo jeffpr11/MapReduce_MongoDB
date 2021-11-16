@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
-
-//const employment_wagesSchema = new mongoose.Schema({})
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 var employment_wagesSchema = new mongoose.Schema({
 	'fields' : {
@@ -57,5 +56,7 @@ var employment_wagesSchema = new mongoose.Schema({
 	'recordid' : String | null,
 	'record_timestamp': String | null
 });
+
+employment_wagesSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('employment_wages', employment_wagesSchema, 'census');
