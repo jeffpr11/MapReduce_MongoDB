@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
-//const employment_wagesSchema = new mongoose.Schema({})
+const employment_wagesSchema = new mongoose.Schema({})
 
-var employment_wagesSchema = new mongoose.Schema({
+/*var employment_wagesSchema = new mongoose.Schema({
 	'fields' : {
 		'industry_code' : String,
 		'size_code' : String,
@@ -56,6 +56,6 @@ var employment_wagesSchema = new mongoose.Schema({
 	'datasetid' : String,
 	'recordid' : String,
 	'record_timestamp': String
-});
+});*/
 
 module.exports = mongoose.model('employment_wages', employment_wagesSchema, 'census');
