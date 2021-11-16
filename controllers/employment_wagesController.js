@@ -11,6 +11,7 @@ module.exports = {
      * employment_wagesController.list()
      */
     list: function (req, res) {
+		const { page = 1, limit = 10 } = req.query;
         Employment_wagesModel.find({},
 			['fields.area_title',
 			'fields.industry_code',  
@@ -21,13 +22,15 @@ module.exports = {
 			'fields.period',
 		 ],
 		{sort:{  _id: -1 }}
-		).limit(25)
+		).limit(limit * 1).skip((page - 1) * limit)
 		.then(data => {
-			res.send(data);
-			console.log("data",data)
+			res.send({
+				total: data.length,
+				data
+			});
 		})
 		.catch(err => {
-			res.status(500).send({ message: err.message || "Some error occurred while retrieving tutorials."})
+			res.status(500).send({ message: err.message || "Some error occurred while retrieving employments."})
 		});		
 	},
 
