@@ -11,7 +11,17 @@ module.exports = {
      * employment_wagesController.list()
      */
     list: function (req, res) {
-        Employment_wagesModel.find().limit(10)
+        Employment_wagesModel.find({},
+			['fields.area_title',
+			'fields.industry_code',  
+			'fields.industry_title', 
+			'fields.total_qtrly_wages', 
+			'fields.avg_wkly_wage',
+			'fields.month1_emplvl',
+			'fields.period',
+		 ],
+		{sort:{  _id: -1 }}
+		).limit(25)
 		.then(data => {
 			res.send(data);
 			console.log("data",data)
