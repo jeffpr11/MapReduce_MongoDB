@@ -11,10 +11,13 @@ module.exports = {
      * employment_wagesController.list()
      */
     list: function (req, res) {
-        Employment_wagesModel.find().limit(10)
+		const { page = 1, limit = 10 } = req.query;
+        Employment_wagesModel.find().limit(limit * 1).skip((page - 1) * limit)
 		.then(data => {
-			res.send(data);
-			console.log("data",data)
+			res.send({
+				total: data.length,
+				data
+			});
 		})
 		.catch(err => {
 			res.status(500).send({ message: err.message || "Some error occurred while retrieving tutorials."})
