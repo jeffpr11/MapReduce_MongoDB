@@ -39,7 +39,6 @@ module.exports = {
      */
     show: function (req, res) {
         var id = req.params.id;
-
         Employment_wagesModel.findOne({_id: id}, function (err, employment_wages) {
             if (err) {
                 return res.status(500).json({
@@ -63,56 +62,16 @@ module.exports = {
      */
     create: function (req, res) {
         var employment_wages = new Employment_wagesModel({
-			industry_code : req.body.industry_code,
-			size_code : req.body.size_code,
-			lq_qtrly_contributions : req.body.lq_qtrly_contributions,
-			month2_emplvl : req.body.month2_emplvl,
-			year : req.body.year,
-			lq_qtrly_estabs_count : req.body.lq_qtrly_estabs_count,
-			month3_emplvl : req.body.month3_emplvl,
-			lq_month3_emplvl : req.body.lq_month3_emplvl,
-			lq_avg_wkly_wage : req.body.lq_avg_wkly_wage,
-			total_qtrly_wages : req.body.total_qtrly_wages,
-			industry_title : req.body.industry_title,
-			oty_total_qtrly_wages_pct_chg : req.body.oty_total_qtrly_wages_pct_chg,
-			oty_qtrly_contributions_pct_chg : req.body.oty_qtrly_contributions_pct_chg,
-			oty_qtrly_estabs_count_pct_chg : req.body.oty_qtrly_estabs_count_pct_chg,
-			oty_month2_emplvl_pct_chg : req.body.oty_month2_emplvl_pct_chg,
-			agglvl_code : req.body.agglvl_code,
-			oty_qtrly_estabs_count_chg : req.body.oty_qtrly_estabs_count_chg,
-			lq_total_qtrly_wages : req.body.lq_total_qtrly_wages,
-			size_title : req.body.size_title,
-			oty_avg_wkly_wage_chg : req.body.oty_avg_wkly_wage_chg,
-			oty_month1_emplvl_chg : req.body.oty_month1_emplvl_chg,
-			oty_taxable_qtrly_wages_pct_chg : req.body.oty_taxable_qtrly_wages_pct_chg,
-			area_titl : req.body.area_titl,
-			own_code : req.body.own_code,
-			oty_month3_emplvl_chg : req.body.oty_month3_emplvl_chg,
-			qtrly_estabs_count : req.body.qtrly_estabs_count,
-			oty_avg_wkly_wage_pct_chg : req.body.oty_avg_wkly_wage_pct_chg,
-			oty_month1_emplvl_pct_chg : req.body.oty_month1_emplvl_pct_chg,
-			oty_qtrly_contributions_chg : req.body.oty_qtrly_contributions_chg,
-			oty_month3_emplvl_pct_chg : req.body.oty_month3_emplvl_pct_chg,
-			period : req.body.period,
-			own_title : req.body.own_title,
-			oty_month2_emplvl_chg : req.body.oty_month2_emplvl_chg,
-			lq_month2_emplvl : req.body.lq_month2_emplvl,
-			oty_taxable_qtrly_wages_chg : req.body.oty_taxable_qtrly_wages_chg,
-			avg_wkly_wage : req.body.avg_wkly_wage,
-			qtr : req.body.qtr,
-			area_fips : req.body.area_fips,
-			qtrly_contributions : req.body.qtrly_contributions,
-			month1_emplvl : req.body.month1_emplvl,
-			agglvl_title : req.body.agglvl_title,
-			lq_disclosure_code : req.body.lq_disclosure_code,
-			lq_taxable_qtrly_wages : req.body.lq_taxable_qtrly_wages,
-			disclosure_code : req.body.disclosure_code,
-			taxable_qtrly_wages : req.body.taxable_qtrly_wages,
-			lq_month1_emplvl : req.body.lq_month1_emplvl,
-			oty_disclosure_code : req.body.oty_disclosure_code,
-			oty_total_qtrly_wages_chg : req.body.oty_total_qtrly_wages_chg
-        });
-
+			fields: {
+				area_title : req.body.fields.area_title,			
+				industry_code : req.body.fields.industry_code,
+				industry_title : req.body.fields.industry_title,
+				total_qtrly_wages : req.body.fields.total_qtrly_wages,
+				avg_wkly_wage : req.body.fields.avg_wkly_wage,
+				period : req.body.fields.period,
+				month1_emplvl : req.body.fields.month1_emplvl,
+			}
+		});
         employment_wages.save(function (err, employment_wages) {
             if (err) {
                 return res.status(500).json({
@@ -120,7 +79,6 @@ module.exports = {
                     error: err
                 });
             }
-
             return res.status(201).json(employment_wages);
         });
     },
