@@ -10,7 +10,8 @@ var options = {
 		'fields.month1_emplvl',
 		'fields.period',
 	],	
-	sort: {  _id: -1 }
+	sort: {  _id: -1 },
+    useEstimatedCount: true
 };
 
 /**
