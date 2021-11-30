@@ -19,8 +19,12 @@ var options = {
  */
 module.exports = {
 
-	/**
-     * employment_wagesController.list()
+    /**
+     * Renderiza la vista index con toda los documentos de 
+     * employment_wages
+     * 
+     * @param {*} req http request
+     * @param {*} res http response
      */
     list: function (req, res) {
 		if (req.query) {
@@ -43,8 +47,13 @@ module.exports = {
 		});		
 	},
 
+
     /**
-     * employment_wagesController.show()
+     * Busca un documento(employment_wages) por el id de 
+     * y renderiza la vista detail con la data encontrada
+     * 
+     * @param {*} req http request
+     * @param {*} res http response
      */
     show: function (req, res) {
         var id = req.params.id;
@@ -66,8 +75,13 @@ module.exports = {
         });
     },
 
+
     /**
-     * employment_wagesController.create()
+     * Crea un nuevo documento basado en el modelo Employment_wagesModel, 
+     * lo almacena en la base y redirige a vista principal
+     * 
+     * @param {*} req http request
+     * @param {*} res http response
      */
     create: function (req, res) {
         var employment_wages = new Employment_wagesModel({
@@ -94,7 +108,12 @@ module.exports = {
     },
 
     /**
-     * employment_wagesController.update()
+     * Busca un documento de  employment_wages por su id, lo actualiza en 
+     * base a los parámetros recibidos en el http request y redirige a la 
+     * vista principal
+     * 
+     * @param {*} req http request
+     * @param {*} res http response
      */
     update: function (req, res) {
         var id = req.params.id;
@@ -114,14 +133,7 @@ module.exports = {
                 });
             }
 			Object.assign(employment_wages.fields, req.body);
-			// employment_wages.fields.area_title = req.body.area_title ? req.body.fields.area_title : employment_wages.fields.area_title,			
-			// employment_wages.fields.industry_code = req.body.industry_code ? req.body.fields.industry_code : employment_wages.fields.industry_code,
-			// employment_wages.fields.industry_title = req.body.industry_title ? req.body.fields.industry_title : employment_wages.fields.industry_title,
-			// employment_wages.fields.total_qtrly_wages = req.body.total_qtrly_wages ? req.body.fields.total_qtrly_wages : employment_wages.fields.total_qtrly_wages,
-			// employment_wages.fields.avg_wkly_wage = req.body.avg_wkly_wage ? req.body.fields.avg_wkly_wage : employment_wages.fields.avg_wkly_wage,
-			// employment_wages.fields.period = req.body.period ? req.body.period : employment_wages.fields.period,
-			// employment_wages.fields.month1_emplvl = req.body.month1_emplvl ? req.body.fields.month1_emplvl : employment_wages.fields.month1_emplvl,
-        	employment_wages.save(function (err, employment_wages) {
+		    	employment_wages.save(function (err, employment_wages) {
 			if (err) {
 				return res.status(500).json({
 					message: 'Error when updating employment_wages.',
@@ -136,7 +148,11 @@ module.exports = {
     },
 
     /**
-     * employment_wagesController.remove()
+     *  Elimina el documento que coincide con id enviado como párametro 
+     *  y redirige a la vista principal
+     * 
+     * @param {*} req http request
+     * @param {*} res http response
      */
     remove: function (req, res) {
         var id = req.params.id;

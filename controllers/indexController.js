@@ -1,6 +1,13 @@
 const fs = require('fs');
 
 module.exports = {
+    /**
+     * Lee al archivo json generado con los resultados del mapReduce 
+     * y renderiza la vista map_reduce con los datos leídos.
+     * 
+     * @param {*} req http request
+     * @param {*} res http response
+     */
     mapReduce: function (req, res) {
         const limit =  10;
         let page = 1;
