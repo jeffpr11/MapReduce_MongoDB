@@ -46,17 +46,6 @@
               <input type="number" placeholder="0.00" min="0" step="0.01" pattern="^\d+(?:\.\d{1,2})?$" class="form-control" name="avg_wkly_wage" value="<%= title !== 'New' ? data.fields.avg_wkly_wage : '' %>" required>
             </div>
           </div>
-
-          <div class="row">
-            <div class="col">
-              <label for="period" class="form-label">Periodo</label>
-              <input type="text" placeholder="YYYY-Q#" class="form-control" name="period" value="<%= title !== 'New' ? data.fields.period : '' %>" required>
-            </div>
-            <div class="col">
-              <label for="month1_emplvl" class="form-label">Nivel de Empleo</label>
-              <input type="number" placeholder="0" min="0" class="form-control" name="month1_emplvl" value="<%= title !== 'New' ? data.fields.month1_emplvl : '' %>" required>
-            </div>
-          </div>
         </form>
       </div>
     </div>

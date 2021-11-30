@@ -6,9 +6,7 @@ var options = {
 		'fields.industry_code',  
 		'fields.industry_title', 
 		'fields.total_qtrly_wages', 
-		'fields.avg_wkly_wage',
-		'fields.month1_emplvl',
-		'fields.period',
+		'fields.avg_wkly_wage'
 	],	
 	sort: {  _id: -1 },
     useEstimatedCount: true

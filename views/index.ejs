@@ -18,22 +18,22 @@
       <table class="table table-borderless employ-table">
         <thead class="table-dark">
           <tr>
-            <th>Área</th>
+            <th>Código de la industria</th>
             <th>Industria</th>
+            <th>Área</th>
             <th>Salarios Trimestrales Totales</th>
             <th>Salario Semanal Promedio</th>
-            <th>Nivel de Empleo</th>
             <th colspan="1">Action</th>
           </tr>
         </thead>
         <tbody id="robot-row">
           <% list.forEach(function(data){ %>
             <tr>
-              <td><%=data.fields.area_title %></td>
-              <td><%=data.fields.industry_title %></td>
+              <td><%=data.fields.industry_code %></td>
+              <td class="text-start"><%=data.fields.industry_title %></td>
+              <td class="text-start"><%=data.fields.area_title %></td>
               <td><%=data.fields.total_qtrly_wages %></td>
               <td><%=data.fields.avg_wkly_wage %></td>
-              <td><%=data.fields.month1_emplvl %></td>
               <td class="text-end" colspan="1">
                 <a class="btn btn-primary align-baseline" data-original-title="Editar" href="/employment/<%= data._id %>"><i class="far fa-edit"></i></a>
                 <a class="btn btn-danger align-baseline" data-original-title="Eliminar" href="/employment/delete/<%= data._id %>"><i class="far fa-trash-alt"></i></a>
