@@ -71,7 +71,6 @@ module.exports = {
                 });
             }
 			res.render('detail', { data: employment_wages, title: 'Detail' });
-            // return res.json(employment_wages);
         });
     },
 
@@ -103,7 +102,6 @@ module.exports = {
                 });
             } else 
 				res.redirect("/employment");
-            // return res.status(201).json(employment_wages);
         });
     },
 
@@ -117,7 +115,7 @@ module.exports = {
      */
     update: function (req, res) {
         var id = req.params.id;
-		
+        
 
         Employment_wagesModel.findOne({_id: id}, function (err, employment_wages) {
             if (err) {
@@ -132,17 +130,17 @@ module.exports = {
                     message: 'No such employment_wages'
                 });
             }
-			Object.assign(employment_wages.fields, req.body);
-		    	employment_wages.save(function (err, employment_wages) {
-			if (err) {
-				return res.status(500).json({
-					message: 'Error when updating employment_wages.',
-					error: err
-				});
-			}else {
-				res.redirect("/employment");
-			}
-			// return res.json(employment_wages);
+            
+            Object.assign(employment_wages.fields, req.body);
+            employment_wages.save(function (err, employment_wages) {
+                if (err) {
+                    return res.status(500).json({
+                        message: 'Error when updating employment_wages.',
+                        error: err
+                    });
+                } else {
+                    res.redirect("/employment");
+                }
             });
         });
     },
@@ -166,8 +164,6 @@ module.exports = {
             }else {
 				res.redirect("/employment");
 			}
-
-            // return res.status(200).json({success: true, message: 'Employment deleted succesfully.'});
         });
     }
 };
